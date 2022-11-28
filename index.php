@@ -40,9 +40,13 @@ $hotels = [
 ];
 
 
+$filterArr = [];
+
+
+
 
 if (isset($_GET['parking']) && !empty($_GET['parking'])) {
-    $filterArr = [];
+
 
     foreach ($hotels as $hotel) {
         if ($hotel['parking'] && $_GET['parking'] == 'parking') {
@@ -51,10 +55,27 @@ if (isset($_GET['parking']) && !empty($_GET['parking'])) {
 
         } else if (!$hotel['parking'] && $_GET['parking'] == 'no-parking') {
             $filterArr[] = $hotel;
+        } else if ($_GET['parking'] == 'Scegli') {
+            $filterArr[] = $hotel;
+
         }
     }
     $hotels = $filterArr;
 }
+
+
+// filtro per voto hotel
+
+// if (isset($_GET['vote']) && !empty($_GET['vote'])) {
+
+
+//     foreach ($hotels as $hotel) {
+//         if ($hotel['vote'] >= $_GET['vote']) {
+//             $filterArr[] = $hotel;
+//         }
+//     }
+//     $hotels = $filterArr;
+// }
 
 
 
@@ -77,14 +98,24 @@ if (isset($_GET['parking']) && !empty($_GET['parking'])) {
 </head>
 
 <body>
+
+    <h1></h1>
     <div class="wrapper position-absolute">
 
         <div>
-            <form action="index.php" method="GET" name="formFilter" class="col-6 m-auto">
-                <select name="parking" id="parking" class="form-select" aria-label="Default select example">
-                    <option selected>Scegli</option>
+            <form action="index.php" method="GET" name="formFilter" class="m-auto col-5">
+                <select name="parking" id="parking" class="form-select col-6" aria-label="Default select example">
+                    <option value="Scegli" selected>Scegli</option>
                     <option value="parking">parking</option>
                     <option value="no-parking">no-parking</option>
+                </select>
+                <select name="vote" id="vote" class="form-select col-4" aria-label="Default select example">
+                    <option value="Scegli" selected>Scegli</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
                 <button type="submit" class="btn btn-warning text-center mt-3 col-6 ">Search</button> <button
                     type="submit" class="btn btn-danger text-center mt-3 col-4 ">Reset</button>
