@@ -66,16 +66,12 @@ if (isset($_GET['parking']) && !empty($_GET['parking'])) {
 
 // filtro per voto hotel
 
-// if (isset($_GET['vote']) && !empty($_GET['vote'])) {
+if (isset($_GET['vote']) && !empty($_GET['vote'])) {
+    $vote = $_GET['vote'];
+    $hotels = array_filter($hotels, fn($value) => $value['vote'] >= $vote);
+}
 
 
-//     foreach ($hotels as $hotel) {
-//         if ($hotel['vote'] >= $_GET['vote']) {
-//             $filterArr[] = $hotel;
-//         }
-//     }
-//     $hotels = $filterArr;
-// }
 
 
 
@@ -99,9 +95,11 @@ if (isset($_GET['parking']) && !empty($_GET['parking'])) {
 
 <body>
 
-    <h1></h1>
-    <div class="wrapper position-absolute">
 
+    <div class="wrapper position-absolute">
+        <div class="title-wrap mb-5">
+            <h1 style="--clr:#FABC3C" href="#" data-text="&nbsp;HOTELS&nbsp;">&nbsp;hotels&nbsp;</h1>
+        </div>
         <div>
             <form action="index.php" method="GET" name="formFilter" class="m-auto col-5">
                 <select name="parking" id="parking" class="form-select col-6" aria-label="Default select example">
@@ -110,7 +108,7 @@ if (isset($_GET['parking']) && !empty($_GET['parking'])) {
                     <option value="no-parking">no-parking</option>
                 </select>
                 <select name="vote" id="vote" class="form-select col-4" aria-label="Default select example">
-                    <option value="Scegli" selected>Scegli</option>
+                    <option value="" selected>Scegli</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
