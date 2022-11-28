@@ -89,6 +89,10 @@ if (isset($_GET['vote']) && !empty($_GET['vote'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
+        integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=='
+        crossorigin='anonymous' referrerpolicy='no-referrer' />
     <link rel="stylesheet" href="./style/style.css">
     <title>HotelSelect</title>
 </head>
@@ -102,21 +106,23 @@ if (isset($_GET['vote']) && !empty($_GET['vote'])) {
         </div>
         <div>
             <form action="index.php" method="GET" name="formFilter" class="m-auto col-5">
-                <select name="parking" id="parking" class="form-select col-6" aria-label="Default select example">
-                    <option value="Scegli" selected>Scegli</option>
-                    <option value="parking">parking</option>
-                    <option value="no-parking">no-parking</option>
-                </select>
-                <select name="vote" id="vote" class="form-select col-4" aria-label="Default select example">
-                    <option value="" selected>Scegli</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <button type="submit" class="btn btn-warning text-center mt-3 col-6 ">Search</button> <button
-                    type="submit" class="btn btn-danger text-center mt-3 col-4 ">Reset</button>
+                <div class=" d-flex ">
+                    <select name="parking" id="parking" class="form-select w-75 " aria-label="Default select example">
+                        <option value="Scegli" selected>Scegli</option>
+                        <option value="parking">parking</option>
+                        <option value="no-parking">no-parking</option>
+                    </select>
+                    <select name="vote" id="vote" class="form-select w-25 " aria-label="Default select example">
+                        <option value="" class="text-center" selected>&starf;</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning text-center mt-3 w-50 ">Search</button> <button
+                    type="submit" class="btn btn-danger text-center mt-3 w-25 ">Reset</button>
             </form>
         </div>
 
@@ -136,7 +142,7 @@ if (isset($_GET['vote']) && !empty($_GET['vote'])) {
                 $parcheggio = $hotel['parking'] ? 'si' : 'no';
             ?>
 
-            <tbody class="  descr">
+            <tbody class="">
                 <tr>
                     <td>
                         <?php echo $hotel['name'] ?>
